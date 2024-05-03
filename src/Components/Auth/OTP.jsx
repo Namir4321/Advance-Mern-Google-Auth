@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const OTP = () => {
   const [otpverify, setVerify] = useState("");
   const navigate=useNavigate()
-  console.log(location.state)
+  // console.log(location.state)
   // const {confirmationResult}=location.state; 
   const emptyArray = ["", "", "", "", "", ""];
   const [inputs, setInputs] = useState(emptyArray);
@@ -51,7 +51,6 @@ const handleKeyDown=(e,index)=>{
     copyInputs[index]="";
     setInputs(copyInputs)
    if (index > 0 && inputs[index] === "") {
-     // Move focus to the previous input
      refs[index - 1].current.focus();
    }
   }

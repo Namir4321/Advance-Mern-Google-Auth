@@ -3,6 +3,7 @@ import logo from "../../images/log.svg";
 import { FcGoogle } from "react-icons/fc";
 import { ImFacebook2 } from "react-icons/im";
 import { GrApple } from "react-icons/gr";
+import {useDispatch} from "react-redux";
 // import firebase from "../../firebase.js";
 import { Link,useNavigate } from "react-router-dom";
 import {
@@ -15,11 +16,13 @@ import {
 import { app } from "../../firebase";
 import { OTP } from "./OTP";
 import { OAuthProvider } from "firebase/auth/cordova";
+import { postauthusinggoogle } from "../../Redux/ApiCall";
 // import { GoogleAuthProvider } from "firebase/auth/cordova";
 
 // import { getRecaptchaVerifier } from "@firebase/auth/react";
 
 export const Login = () => {
+  const dispatch=useDispatch()
   const navigate=useNavigate();
   const auth = getAuth();
   const [phone, setPhone] = useState();
@@ -36,7 +39,7 @@ export const Login = () => {
     // console.log(res.confirm)
    sessionStorage.setItem(
      "confirmationResult",
-     JSON.stringify(confirmationResult)
+     JSON.stringify(res)
    );
    navigate("/verify");
 
@@ -49,8 +52,9 @@ export const Login = () => {
   const provider=new GoogleAuthProvider()
   signInWithPopup(auth,provider)
   .then((result)=>{
-    console.log(result)
-    navigate("/main")
+    console.log(result.user)
+dispatch(postauthusinggoogle({name:result.user.displayName,email:result.user.email,photo:result.user.photoURL}))
+    // navigate("/main")
   }).catch(err=>{
 console.log(err)
   })

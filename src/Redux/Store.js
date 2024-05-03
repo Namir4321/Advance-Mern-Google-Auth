@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import PackRedux from "./PackRedux";
+import UserRedux from "./UserRedux";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import {
@@ -11,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 
+
 const persistConfig = {
   key: "root",
   version: 1,
@@ -19,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   pack: PackRedux,
+  user:UserRedux,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

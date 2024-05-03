@@ -160,8 +160,8 @@ export const MainPage = () => {
         <span className="text-light mx-1">Honeymoon</span>
         <span className="text-light mx-1">Villas</span>
       </div>
-      <div className='p-2'style={{background:"#DADADA"}}>
-      <MainCard style={{borderRadius:"30px"}}/>
+      <div className=''style={{background:"#DADADA"}}>
+      <MainCard className="" style={{ borderRadius:"30px",marginTop:"10px"}}/>
       </div>
     </div>
   );
