@@ -22,5 +22,5 @@ app.use("/pack",pack)
 app.use("/auth",auth);
 
 app.listen(port, () => {
-  console.log(`listning on port ${port}`);
+  console.log(`listning at port ${port}`);
 });
